@@ -84,16 +84,31 @@
   align-items: center;
 }
 .info-block-label img{
-  width: 1em;
+  width: 3em;
 }
 .info-block-label span{
-  color: var(--white);
+  color: var(--blue-1);
   font-size: 0.8em;
 }
 .info-block-value{
   width: 50%;
-  display: flex;
-  align-content: center;
+  /* display: flex;
+  align-content: center; */
   color: var(--blue-1);
+  margin-top: auto;
+  margin-bottom: auto;
 }
-
+.search{
+  margin-bottom: 1em;
+  text-align: center;
+}
+.search input{
+  background: #43489d;
+  outline: none;
+  border: none;
+  border-radius: 20px;
+  padding: 1em;
+  color: var(--grey-1);
+  font-size: 0.8em;
+  text-align: center;
+}
