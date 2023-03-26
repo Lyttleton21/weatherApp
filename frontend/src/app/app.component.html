@@ -1,14 +1,17 @@
 <div class="search">
-  <form>
-    <input type="text" placeholder="Search city...">
+  <form #form="ngForm" (submit)="onsubmit()">
+    <input type="text"
+    placeholder="Search city..."
+    name="city"
+    [(ngModel)]="cityName">
   </form>
 </div>
 
-<div class="container">
+<div class="container" *ngIf="weatherData || errorMessage">
   <div class="upper-data">
     <ng-container>
-      <img src="../assets/codeWeather.jpg" *ngIf="14 > 15">
-      <img src="../assets/hotweather.jpg" *ngIf="14 <= 15">
+      <img src="../assets/codeWeather.jpg" *ngIf="weatherData.main.temp > 15">
+      <img src="../assets/hotweather.jpg" *ngIf="weatherData.main.temp <= 15">
       <img src="../assets/error.png" *ngIf="error">
     </ng-container>
 
@@ -71,7 +74,7 @@
           <span>wind</span>
         </div>
         <div class="info-block-value">
-          {{weatherData.wind.deg}} km/h
+          {{weatherData.wind.speed}} km/h
         </div>
       </div>
 

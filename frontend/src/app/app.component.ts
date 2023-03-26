@@ -7,22 +7,34 @@ import { WeatherService } from './service/weather.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
+  cityName:string = 'Ibadan';
   weatherData: any;
   error:boolean = false;
   errorMessage?:string
+
+
   constructor(private weatherService:WeatherService){}
 
   ngOnInit(): void {
-    this.weatherService.getWeatherData('Lagos')
+    this.getWeatherData(this.cityName);
+    this.cityName = '';
+  }
+
+  onsubmit(){
+    this.getWeatherData(this.cityName);
+    this.cityName = '';
+  }
+
+  getWeatherData(cityName:string){
+    this.weatherService.getWeatherData(cityName)
     .subscribe({
       next: data => {
         this.weatherData = data;
-        console.log(this.weatherData);
+        //console.log(this.weatherData);
       },
       error: err => {
         this.error = true;
         this.errorMessage = err.message;
-        console.log(this.errorMessage);
       }
     });
   }
